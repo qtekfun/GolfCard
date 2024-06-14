@@ -1,0 +1,23 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ main ] # Trigger on pushes to the main branch
+  workflow_dispatch:  # Add this line to enable manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Gradle
+        run: ./gradlew assembleDebug
