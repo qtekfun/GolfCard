@@ -1,3 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
     <string name="app_name">GolfCard</string>
+
+    <string name="back">Back</string>
+
+    <string name="golf_play">Golf Play</string>
+
+    <string name="golfcard_main_menu">GolfCard Main Menu</string>
+
+    <string name="hole_number">Hole number</string>
+
+    <string name="main_menu">Main Menu</string>
+
+    <string name="new_game">New Game</string>
+
+    <string name="past_games">Past Games</string>
+
+    <string name="save_game">Save Game</string>
 </resources>

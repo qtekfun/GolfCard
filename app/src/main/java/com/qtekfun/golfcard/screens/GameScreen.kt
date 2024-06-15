@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -49,12 +50,12 @@ fun GameScreen(navController: NavController) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Golf Play")
+                    Text(text = stringResource(R.string.golf_play))
                 },
                 navigationIcon = {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back",
+                        contentDescription = stringResource(R.string.back),
                         modifier = Modifier.clickable { navController.popBackStack() }
                     )
                 }
@@ -83,10 +84,10 @@ fun GolfGame(navController: NavController, holes: Int = 18) {
         }
         Row(horizontalArrangement = Arrangement.Center) {
             Button(onClick = { navController.popBackStack() }) {
-                Text(text = "Back")
+                Text(text = stringResource(R.string.back))
             }
             Button(onClick = { /*TODO*/ }) {
-                Text(text = "Save Game")
+                Text(text = stringResource(R.string.save_game))
             }
         }
     }
@@ -151,6 +152,6 @@ fun Hole(number: Int = 0) {
             contentDescription = "Test Image"
         )
         Spacer(modifier = Modifier.width(6.dp))
-        HoleData("Hole number $number", MaterialTheme.typography.labelLarge)
+        HoleData(stringResource(R.string.hole_number) + " $number", MaterialTheme.typography.labelLarge)
     }
 }

@@ -1,5 +1,6 @@
 package com.qtekfun.golfcard.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,9 +12,12 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.qtekfun.golfcard.R
 import com.qtekfun.golfcard.navigation.AppScreens
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StartScreen(navController: NavController) {
@@ -21,7 +25,7 @@ fun StartScreen(navController: NavController) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "GolfCard Main Menu")
+                    Text(text = stringResource(id = R.string.golfcard_main_menu))
                 }
             )
         }
@@ -38,12 +42,12 @@ fun BodyContent(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Main Menu")
+        Text(text = stringResource(id = R.string.main_menu))
         Button(onClick = { navController.navigate(AppScreens.GameScreen.route) }) {
-            Text(text = "New Game")
+            Text(text = stringResource(id = R.string.new_game))
         }
         Button(onClick = { /*TODO*/ }) {
-            Text(text = "Past Games")
+            Text(text = stringResource(id = R.string.past_games))
         }
     }
 }
