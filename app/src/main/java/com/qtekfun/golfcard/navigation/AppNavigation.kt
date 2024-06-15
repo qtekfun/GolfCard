@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.qtekfun.golfcard.screens.GameScreen
 import com.qtekfun.golfcard.screens.StartScreen
+import com.qtekfun.golfcard.screens.ConfigGameScreen
 
 @Composable
 fun AppNavgation() {
@@ -13,6 +14,9 @@ fun AppNavgation() {
     NavHost(navController = navController, startDestination = AppScreens.StartScreen.route) {
         composable(route = AppScreens.StartScreen.route) {
             StartScreen(navController)
+        }
+        composable(route = AppScreens.ConfigGameScreen.route) {
+            ConfigGameScreen(navController)
         }
         composable(route = AppScreens.GameScreen.route) {
             GameScreen(navController)

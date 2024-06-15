@@ -6,6 +6,8 @@
 
     <string name="golf_play">Golf Play</string>
 
+    <string name="config_game">Config Game</string>
+
     <string name="golfcard_main_menu">GolfCard Main Menu</string>
 
     <string name="hole_number">Hole number</string>
