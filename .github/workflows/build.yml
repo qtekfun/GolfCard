@@ -27,6 +27,12 @@ jobs:
       - name: Checks
         run: find . -type f -name "*.apk"
 
+      - name: Create Git Tag
+        id: tag
+        run: |
+          git tag v0.1.${{ github.run_number }}
+          git push origin v0.1.${{ github.run_number }}
+
       - name: Sign app APK
         uses: r0adkll/sign-android-release@v1
         id: sign_app
