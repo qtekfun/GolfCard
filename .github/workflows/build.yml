@@ -19,21 +19,36 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build with Gradle
-        run: ./gradlew assembleDebug
+      - name: Build Release APK
+        uses: gradle/gradle-build-action@v3
+        with:
+          arguments: assembleRelease
 
-      - name: Create Git Tag
-        id: tag
-        run: |
-          git tag v0.1.${{ github.run_number }}
-          git push origin v0.1.${{ github.run_number }}
+      - name: Checks
+        run: find . -type f -name "*.apk"
+
+      - name: Sign app APK
+        uses: r0adkll/sign-android-release@v1
+        id: sign_app
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.KEY_BASE64 }}
+          alias: ${{ secrets.KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.KEYSTORE_PASS }}
+          keyPassword: ${{ secrets.KEYSTORE_PASS }}
+        env:
+          BUILD_TOOLS_VERSION: "34.0.0"
 
       - name: Create Release
-        id: create_release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
+        id: publish_release
         with:
-          files: app/build/outputs/apk/debug/app-debug.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG_NAME: v0.1.${{ github.run_number }}
+          files: ${{steps.sign_app.outputs.signedReleaseFile}}
+          draft: true
+          prerelease: true
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Signed APK
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
