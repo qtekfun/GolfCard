@@ -44,7 +44,7 @@ jobs:
         id: publish_release
         with:
           files: ${{steps.sign_app.outputs.signedReleaseFile}}
-          draft: true
+          draft: false
           prerelease: true
 
       - name: Upload Artifact
