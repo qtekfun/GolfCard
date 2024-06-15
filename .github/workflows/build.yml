@@ -24,8 +24,9 @@ jobs:
 
       - name: Build Release APK
         uses: gradle/actions/setup-gradle@v3
-        with:
-          arguments: assembleRelease
+
+      - name: Assemble the project
+        run: ./gradlew assemble
 
       - name: Checks
         run: find . -type f -name "*.apk"
