@@ -41,6 +41,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.qtekfun.golfcard.R
+import com.qtekfun.golfcard.navigation.AppScreens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -56,7 +57,7 @@ fun GameScreen(navController: NavController) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(R.string.back),
-                        modifier = Modifier.clickable { navController.popBackStack() }
+                        modifier = Modifier.clickable { navController.navigate(AppScreens.StartScreen.route) }
                     )
                 }
             )
@@ -83,7 +84,7 @@ fun GolfGame(navController: NavController, holes: Int = 18) {
             Hole(i)
         }
         Row(horizontalArrangement = Arrangement.Center) {
-            Button(onClick = { navController.popBackStack() }) {
+            Button(onClick = { navController.navigate(AppScreens.StartScreen.route) }) {
                 Text(text = stringResource(R.string.back))
             }
             Button(onClick = { /*TODO*/ }) {

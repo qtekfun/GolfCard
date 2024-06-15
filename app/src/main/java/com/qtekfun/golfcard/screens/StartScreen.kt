@@ -43,7 +43,7 @@ fun BodyContent(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = stringResource(id = R.string.main_menu))
-        Button(onClick = { navController.navigate(AppScreens.GameScreen.route) }) {
+        Button(onClick = { navController.navigate(AppScreens.ConfigGameScreen.route) }) {
             Text(text = stringResource(id = R.string.new_game))
         }
         Button(onClick = { /*TODO*/ }) {
