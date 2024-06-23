@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -64,4 +66,31 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.room.runtime)
+    //annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // To use Kotlin annotation processing tool (kapt)
+    ksp(libs.room.compiler)
+
+    // To use Kotlin Symbol Processing (KSP)
+    // ksp("androidx.room:room-compiler:$room_version")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.room.ktx)
+
+    // optional - RxJava2 support for Room
+    implementation(libs.room.rxjava2)
+
+    // optional - RxJava3 support for Room
+    implementation(libs.room.rxjava3)
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation(libs.room.guava)
+
+    // optional - Test helpers
+    implementation(libs.room.testing)
+
+    // optional - Paging 3 Integration
+    implementation(libs.room.paging)
 }
