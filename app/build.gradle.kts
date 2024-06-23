@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.dagger.hilt)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -93,4 +95,9 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation(libs.room.paging)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler.test)
 }
