@@ -1,10 +1,8 @@
 name: Android Release
 
 on:
-  workflow_run:
-    workflows: ["Android Build"]
-    types:
-      - completed
+  push:
+    branches: [ 'main']
   workflow_dispatch:  # Add this line to enable manual triggering
 
 jobs:
